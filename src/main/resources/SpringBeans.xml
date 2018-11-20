@@ -1,0 +1,42 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<bean id="dateFormater" class="java.text.SimpleDateFormat">
+		<constructor-arg value="yyyy-MM-dd" />
+	</bean>
+
+	<bean class="com.springExmpl.beans.SimpleBeanPostProcessor" /> 
+	<bean class="com.springExmpl.beans.SimpleBeanPostProcessor2" />
+
+
+
+	<!-- A simple bean definition -->
+	<bean id="articleDataBean"
+		class="com.springExmpl.beans.ArticleDataBean">
+		<!-- collaborators and configuration for this bean go here -->
+		<constructor-arg value="10" /> 
+		<constructor-arg value="chaine " /> 
+		<constructor-arg value="10.10" />
+		<constructor-arg>
+			<bean factory-bean="dateFormater" factory-method="parse">
+				<constructor-arg value="2012-11-12" />
+			</bean>
+		</constructor-arg>
+	</bean>
+
+	<!-- <bean id="CatalogueDataBean" class="com.springExmpl.beans.CatalogueDataBean" 
+		> collaborators and configuration for this bean go here </bean> -->
+
+	<bean id="articleMetierBean"
+		class="com.springExmpl.beans.ArticleMetierBean">
+		<!-- collaborators and configuration for this bean go here -->
+	</bean>
+
+</beans>
